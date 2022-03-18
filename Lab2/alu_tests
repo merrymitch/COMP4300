@@ -1,0 +1,192 @@
+#ALU test file
+
+add wave -position insertpoint \
+sim:/alu/operand1 \
+sim:/alu/operand2 \
+sim:/alu/operation \
+sim:/alu/result \
+sim:/alu/error \
+
+#Unsigned addition
+#F + 5 = 14
+force -freeze sim:/alu/operand1 32'h0000000F 0
+force -freeze sim:/alu/operand2 32'h00000005 0
+force -freeze sim:/alu/operation 4'h0 0
+run 100 ns
+#FFFFFFFF + F = Overflow Error (0001)
+force -freeze sim:/alu/operand1 32'hFFFFFFFF 0
+force -freeze sim:/alu/operand2 32'h0000000F 0
+force -freeze sim:/alu/operation 4'h0 0
+run 100 ns
+
+#Unsigned subtraction
+#F - 5 = A
+force -freeze sim:/alu/operand1 32'h0000000F 0
+force -freeze sim:/alu/operand2 32'h00000005 0
+force -freeze sim:/alu/operation 4'h1 0
+run 100 ns
+#1 - F = Underflow Error (0010)
+force -freeze sim:/alu/operand1 32'h00000001 0
+force -freeze sim:/alu/operand2 32'h0000000F 0
+force -freeze sim:/alu/operation 4'h1 0
+run 100 ns
+
+#Two's complement addition
+force -freeze sim:/alu/operand1 32'h8000000A 0
+force -freeze sim:/alu/operand2 32'h00000006 0
+force -freeze sim:/alu/operation 4'h2 0
+run 100 ns
+#Overflow Error (0001)
+force -freeze sim:/alu/operand1 32'h7FFFFFFF 0
+force -freeze sim:/alu/operand2 32'h0000000A 0
+force -freeze sim:/alu/operation 4'h2 0
+run 100 ns
+#Underflow Error (0010)
+force -freeze sim:/alu/operand1 32'h80000000 0
+force -freeze sim:/alu/operand2 32'h80000001 0
+force -freeze sim:/alu/operation 4'h2 0
+run 100 ns
+
+#Two's complement subtraction
+force -freeze sim:/alu/operand1 32'h00000010 0
+force -freeze sim:/alu/operand2 32'h0000000A 0
+force -freeze sim:/alu/operation 4'h3 0
+run 100 ns
+#Overflow Error (0001)
+force -freeze sim:/alu/operand1 32'h7FFFFFFF 0
+force -freeze sim:/alu/operand2 32'hF000000F 0
+force -freeze sim:/alu/operation 4'h3 0
+run 100 ns
+#Underflow Error (0010)
+force -freeze sim:/alu/operand1 32'h80000000 0
+force -freeze sim:/alu/operand2 32'h0FFFFFFF 0
+force -freeze sim:/alu/operation 4'h3 0
+run 100 ns
+
+#Two's complement multiply
+force -freeze sim:/alu/operand1 32'h0000000F 0
+force -freeze sim:/alu/operand2 32'h00000002 0
+force -freeze sim:/alu/operation 4'h4 0
+run 100 ns
+#Overflow Error (0001)
+force -freeze sim:/alu/operand1 32'h80000000 0
+force -freeze sim:/alu/operand2 32'h8000000F 0
+force -freeze sim:/alu/operation 4'h4 0
+run 100 ns
+#Underflow Error (0010)
+force -freeze sim:/alu/operand1 32'hF0000000 0
+force -freeze sim:/alu/operand2 32'h0FFFFFFF 0
+force -freeze sim:/alu/operation 4'h4 0
+run 100 ns
+
+#Two's complement divide
+force -freeze sim:/alu/operand1 32'h00000010 0
+force -freeze sim:/alu/operand2 32'h00000002 0
+force -freeze sim:/alu/operation 4'h5 0
+run 100 ns
+#Divide by Zero Error (0011)
+force -freeze sim:/alu/operand1 32'h0000000F 0
+force -freeze sim:/alu/operand2 32'h00000000 0
+force -freeze sim:/alu/operation 4'h5 0
+run 100 ns
+#Underflow Error (0010)
+force -freeze sim:/alu/operand1 32'h80000000 0
+force -freeze sim:/alu/operand2 32'hFFFFFFFF 0
+force -freeze sim:/alu/operation 4'h5 0
+run 100 ns
+
+#Logical AND
+force -freeze sim:/alu/operand1 32'h00000001 0
+force -freeze sim:/alu/operand2 32'h00000001 0
+force -freeze sim:/alu/operation 4'h6 0
+run 100 ns
+
+force -freeze sim:/alu/operand1 32'h00000001 0
+force -freeze sim:/alu/operand2 32'h00101010 0
+force -freeze sim:/alu/operation 4'h6 0
+run 100 ns
+
+force -freeze sim:/alu/operand1 32'h00000001 0
+force -freeze sim:/alu/operand2 32'h00000000 0
+force -freeze sim:/alu/operation 4'h6 0
+run 100 ns
+
+#Bitwise AND
+force -freeze sim:/alu/operand1 32'h11111111 0
+force -freeze sim:/alu/operand2 32'h11111111 0
+force -freeze sim:/alu/operation 4'h7 0
+run 100 ns
+
+force -freeze sim:/alu/operand1 32'h77777777 0
+force -freeze sim:/alu/operand2 32'h88888888 0
+force -freeze sim:/alu/operation 4'h7 0
+run 100 ns
+
+force -freeze sim:/alu/operand1 32'hFFFFFFFF 0
+force -freeze sim:/alu/operand2 32'hAAAAAAAA 0
+force -freeze sim:/alu/operation 4'h7 0
+run 100 ns
+
+#Logical OR
+force -freeze sim:/alu/operand1 32'h00000001 0
+force -freeze sim:/alu/operand2 32'h00000000 0
+force -freeze sim:/alu/operation 4'h8 0
+run 100 ns
+
+force -freeze sim:/alu/operand1 32'h01001000 0
+force -freeze sim:/alu/operand2 32'h00000001 0
+force -freeze sim:/alu/operation 4'h8 0
+run 100 ns
+
+force -freeze sim:/alu/operand1 32'h00000000 0
+force -freeze sim:/alu/operand2 32'h00000000 0
+force -freeze sim:/alu/operation 4'h8 0
+run 100 ns
+
+#Bitwise OR
+force -freeze sim:/alu/operand1 32'h77777777 0
+force -freeze sim:/alu/operand2 32'h88888888 0
+force -freeze sim:/alu/operation 4'h9 0
+run 100 ns
+
+force -freeze sim:/alu/operand1 32'h11111111 0
+force -freeze sim:/alu/operand2 32'h00000000 0
+force -freeze sim:/alu/operation 4'h9 0
+run 100 ns
+
+force -freeze sim:/alu/operand1 32'hFFFFFFFF 0
+force -freeze sim:/alu/operand2 32'hAAAAAAAA 0
+force -freeze sim:/alu/operation 4'h9 0
+run 100 ns
+
+#Logical NOT
+force -freeze sim:/alu/operand1 32'h00000001 0
+force -freeze sim:/alu/operand2 32'h00000000 0
+force -freeze sim:/alu/operation 4'hA 0
+run 100 ns
+
+force -freeze sim:/alu/operand1 32'h00010101 0
+force -freeze sim:/alu/operand2 32'h00000000 0
+force -freeze sim:/alu/operation 4'hA 0
+run 100 ns
+
+force -freeze sim:/alu/operand1 32'h00000000 0
+force -freeze sim:/alu/operand2 32'h00000000 0
+force -freeze sim:/alu/operation 4'hA 0
+run 100 ns
+
+#Bitwise NOT
+force -freeze sim:/alu/operand1 32'hFFFFFFFF 0
+force -freeze sim:/alu/operand2 32'h00000000 0
+force -freeze sim:/alu/operation 4'hB 0
+run 100 ns
+
+force -freeze sim:/alu/operand1 32'h00000000 0
+force -freeze sim:/alu/operand2 32'h00000000 0
+force -freeze sim:/alu/operation 4'hB 0
+run 100 ns
+
+force -freeze sim:/alu/operand1 32'hAAAAAAAA 0
+force -freeze sim:/alu/operand2 32'h00000000 0
+force -freeze sim:/alu/operation 4'hB 0
+run 100 ns
