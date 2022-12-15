@@ -1,9 +1,10 @@
 # COMP 4300
-- Computer Architecture Labs and Homework
-- DISCLAIMER: By duplicating, copying, or redistributing material found in this the website and GitHub Repository, you(the "User") are in direct violation of Auburn University Title XII Student Academic Honesty Code: Violations 1201.4 (Violations of the Student Academic Honesty Code).
+COMP 4300 Labs and Homework 
+Computer Architecture
+
 ```
 
-        Total Views per Day from 2022-10-11 to 2022-12-14
+        Total Views per Day from 2022-10-11 to 2022-12-15
 
         Repository Views
       31 ┼                           ╭╮
@@ -17,12 +18,12 @@
       14 ┤      │ │           ╭╮    │   │
       12 ┤      │ │           ││    │   │
       10 ┤     ╭╯ ╰╮          ││    │   │
-       8 ┤  ╭╮ │   │    ╭╮    ││    │   │
-       6 ┤  ││ │   │    ││    ││    │   │
-       4 ┤  ││ │   ╰╮   │╰╮   │╰╮   │   │
-       2 ┤  ││ │    │   │ │   │ │╭╮╭╯   │
-       0 ┼──╯╰─╯    ╰───╯ ╰───╯ ╰╯╰╯    ╰─────────────────────────────────
+       8 ┤  ╭╮ │   │    ╭╮    ││    │   │                                 ╭
+       6 ┤  ││ │   │    ││    ││    │   │                                 │
+       4 ┤  ││ │   ╰╮   │╰╮   │╰╮   │   │                                 │
+       2 ┤  ││ │    │   │ │   │ │╭╮╭╯   │                                 │
+       0 ┼──╯╰─╯    ╰───╯ ╰───╯ ╰╯╰╯    ╰─────────────────────────────────╯
 
-        Chart last updated - Wed Dec 14 23:59:35 2022 UTC
+        Chart last updated - Thu Dec 15 23:59:39 2022 UTC
         
 ```
