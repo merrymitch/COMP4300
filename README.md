@@ -24,6 +24,6 @@ Computer Architecture
        8 ┤                         ╭╮          │ │                  │ ╰╮   ││               ╭╮
        0 ┼─────────────────────────╯╰──────────╯ ╰──────────────────╯  ╰───╯╰───────────────╯╰─────
 
-        Chart last updated - Thu May 25 00:00:00 2023 UTC
+        Chart last updated - Thu May 25 23:59:41 2023 UTC
         
 ```
